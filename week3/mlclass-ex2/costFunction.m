@@ -22,6 +22,8 @@ grad = zeros(size(theta));
 
 % ========================= Compute J =========================
 
+h_theta = sigmoid(X * theta)
+transpose(-y) * log(h_theta)
 J = (1 / m) * sum(transpose(-y) * log(h_theta) - transpose((1 - y)) * log(1 - h_theta));
 
 % ======================== Compute grad =======================
