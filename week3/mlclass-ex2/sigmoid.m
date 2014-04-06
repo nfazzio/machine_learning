@@ -14,7 +14,8 @@ function h = sigmoid_scalar(w)
     h = 1 / (1 + e^-w);
 endfunction
 
-g = arrayfun(@sigmoid_scalar, z)
+% Apply scalar sigmoid function to all element of a matrix or vector.
+g = arrayfun(@sigmoid_scalar, z);
 
 
 % =============================================================
