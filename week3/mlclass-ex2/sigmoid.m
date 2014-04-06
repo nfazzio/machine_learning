@@ -9,8 +9,12 @@ g = zeros(size(z));
 % Instructions: Compute the sigmoid of each value of z (z can be a matrix,
 %               vector or scalar).
 
+% Function to compute sigmoid of scalar
+function h = sigmoid_scalar(w)
+    h = 1 / (1 + e^-w);
+endfunction
 
-
+g = arrayfun(@sigmoid_scalar, z)
 
 
 % =============================================================
