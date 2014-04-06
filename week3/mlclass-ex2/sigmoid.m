@@ -11,7 +11,7 @@ g = zeros(size(z));
 
 
 % Apply scalar sigmoid function to all element of a matrix or vector.
-g = arrayfun(@(w)1 / (1 + e^-w), z);
+g = arrayfun(@(w) 1 / (1 + e^-w), z);
 
 
 % =============================================================
