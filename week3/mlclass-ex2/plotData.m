@@ -19,11 +19,11 @@ negative = find(y==0);
 
 % Plot the values
 plot(X(positive, :), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
-plot(X(negative, :), 'ko', 'MarkerFaceColor', 'y', LineWidth', 2, ...
+plot(X(negative, :), 'ko', 'MarkerFaceColor', 'y', 'LineWidth', 2, ...
     'MarkerSize', 7);
 
-
-
+plot(X(negative, :), 'ko', 'MarkerFaceColor', 'y', ...
+     'MarkerSize', 7);
 
 
 
