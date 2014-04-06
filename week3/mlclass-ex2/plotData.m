@@ -12,7 +12,14 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+% Create binary vectors of the positions of positive and negative
+% classifications in the training data 
+positive = find(y==1);
+negative = find(y==0);
 
+% Plot the values
+plot(X(positive, :), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
+plot(X(negative, :), 'ko', 'LineWidth', 2, 'MarkerSize', 7);
 
 
 
