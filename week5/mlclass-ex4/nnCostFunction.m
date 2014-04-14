@@ -62,21 +62,55 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% ============================ Part 1 ========================
+
+y_temp = y;
+y = zeros(num_labels,m);
+for i = 1:size(y_temp)
+    j = y_temp(i);
+    y(j,i) = 1;
+end
+
+X_ones = ones(1,m);
+X = transpose([X_ones; transpose(X)]);
+a3 = zeros(m,num_labels);
+
+% Loop through sample data solution
+%{
+for i = 1:m,
+    x = X(i,:);
+    a2 = arrayfun(@sigmoid, Theta1 * transpose(x));
+    a2 = [1; a2];
+    a3_t = arrayfun(@sigmoid, Theta2 * a2);
+    a3_t;
+    a3(i,:) = a3_t;
+    a3_s = size(a3);
+    % costs(i) = -y(i,1) * log
+end
+J = (1/m) * sum((-(y * log(a3)) - (1-y) * log(1 - a3))(:));
+J = J
+%}
+
+% vectorized solution
+a1 = X;
+z2 = Theta1 * transpose(a1);
+a2 = arrayfun(@sigmoid, z2);
+a2ones = ones(1,m);
+a2 = [a2ones; a2];
+z3 = Theta2 * a2;
+a3 = arrayfun(@sigmoid, z3);
+
+J = (1 / m) * sum(sum(-y .* log(a3) - (1 - y) .* log(1 - a3)));
 
 
 
+% ============================ Part 2 ========================
 
-
-
-
-
-
-
-
-
-
-
-
+% Create Regularizer
+regularizer = (lambda / (2 * m)) * (sum(sum(Theta1(:,2:end) .^ 2)) + ...
+   sum(sum(Theta2(:,2:end) .^ 2)))
+% Add regularizer to J
+J = J + regularizer
 
 
 
