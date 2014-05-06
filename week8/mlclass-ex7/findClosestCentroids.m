@@ -22,12 +22,15 @@ idx = zeros(size(X,1), 1);
 %
 
 
-
-
-
+centroid_distances = zeros(1,K);
+for i = 1:length(idx)
+    for j = 1:K
+        centroid_distances(j) = norm(X(i,:) - centroids(j,:))^2;
+    endfor
+    idx(i) = find(centroid_distances==min(min(centroid_distances)));
+endfor
 
 
 % =============================================================
 
 end
-
