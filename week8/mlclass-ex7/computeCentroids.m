@@ -26,11 +26,15 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
-
-
-
-
+for i = 1:K
+    i_index = repmat((idx == i), 1, n);
+    group_values = i_index .* X;
+    % Strip zero value rows
+    group_values = group_values(any(group_values,2),:);
+    smgv = size(mean(group_values))
+    mgv = mean(group_values)
+    scent = size(centroids(i,:))
+    centroids(i,:) = mean(group_values);
 
 
 % =============================================================
